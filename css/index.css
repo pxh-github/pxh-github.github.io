@@ -87,7 +87,7 @@ section {
 
 }
 
-.dot {
+#dots {
     /* height: 10px;
     width: 10px;*/
     border-radius: 50%;
@@ -99,7 +99,7 @@ section {
     cursor: pointer;
 }
 
-.dot li {
+#dots li {
     width: 15px;
     height: 15px;
     background-color: rgb(178, 178, 177);
