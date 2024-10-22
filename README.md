@@ -1,3 +1,10 @@
+# 网站ip地址：121.40.150.248(下面的超链接可能会失效)
+>[这是我的网站](121.40.150.248)
+# 我的github库地址:
+>[SSH](git@github.com:pxh-github/works.git)
+>[HTTPS](https://github.com/pxh-github/works.git)
+>SSH: git@github.com:pxh-github/works.git
+>HTTPS:https://github.com/pxh-github/works.git
 ##### ps:这只是一个README文件,更详细的请参见注释
 ## index.html/index.css/index.js文件中
 >##### 实现了轮播图,用户可以通过点击前后键进行切换,轮播图自己也可以进行切换
