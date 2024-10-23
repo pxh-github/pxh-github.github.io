@@ -4,9 +4,9 @@ let pzx = document.querySelector(".pzx");
 let add = document.querySelector(".add");
 let newx = document.querySelector(".new");
 let newadd = document.querySelector(".newsbutton");
-let input = text.value.trim();
 let operationPanel = document.querySelector(".操作面板");
 let apply = document.querySelector("#apply");
+let input = text.value.trim();
 
 
 window.onload = function () {//页面加载时
@@ -18,6 +18,7 @@ window.onload = function () {//页面加载时
 function color() {
     var colorchooser = document.querySelector("#colorchooser");//获取第一个id为colorchooser的元素
     var themecolor = colorchooser.value;//themecolor就是颜色选择器的值(颜色)
+
     operationPanel.style.backgroundColor = themecolor;//设置操作面板的背景颜色
     localStorage.setItem('savedcolor', themecolor);//把themecolor储存到localStorage里面
 }
@@ -70,14 +71,20 @@ function switchSession(sessionId) {
         const meetingList = document.querySelector('.会话');//获取第一个class为'会话'的元素
         meetingList.innerHTML = '';//清空会话列表中的内容
         sessions.forEach(session => {//遍历sessions数组
+
             const li = document.createElement('li');//为每一个会话名添加一个li
             li.textContent = session.name;//li的文本内容为会话名
             li.dataset.sessionId = session.id;//li所指向的会话id为session.id
+
             const deleteButton = document.createElement('button');//为每一个会话创建一个button,dom名是deleteButton
+
             deleteButton.textContent = '🗑️'; //deletebutton的文本内容是🗑️
             deleteButton.dataset.sessionId = session.id; // deleteButton所指向的会话id就是session.id  
             deleteButton.className = 'delete-button'; // 给delete添加一个class  
+
+
             li.appendChild(deleteButton); // 将deleteButton添加到会话项中
+
             li.addEventListener('click', () => switchSession(session.id));//为每一个li添加事件检测器，点击时执行切换会话函数，所切换的会话id为session.id
             deleteButton.addEventListener('click', () => deleteSession(session.id));//给deleteButton添加事件侦测器,click时执行deleteSession函数
             if (session.id === currentSessionId) {
@@ -104,16 +111,22 @@ function renderSessions() {//渲染会话
     const meetingList = document.querySelector('.会话');//获取第一个class为'会话'的元素
     meetingList.innerHTML = '';//清空会话列表
     sessions.forEach(session => {//又是遍历(真好用)
+
         /*一样的*/
         const li = document.createElement('li');
         li.textContent = session.name;
         li.dataset.sessionId = session.id;
+
         const deleteButton = document.createElement('button');//为每一个会话创建一个button,dom名是deleteButton
+
         deleteButton.textContent = '🗑️'; //deletebutton的文本内容是🗑️
         deleteButton.dataset.sessionId = session.id; // deleteButton所指向的会话id就是session.id  
         deleteButton.className = 'delete-button'; // 给delete添加一个class  
+
+
         li.appendChild(deleteButton); // 将deleteButton添加到会话项中
         li.addEventListener('click', () => switchSession(session.id));
+
         deleteButton.addEventListener('click', () => deleteSession(session.id));//给deleteButton添加事件侦测器,click时执行deleteSession函数
         meetingList.appendChild(li);
     });
@@ -128,6 +141,7 @@ function deleteSession(sessionId) //定义deleteSession函数
         saveSessions(sessions); // 保存更新后的会话列表  
         renderSessions(); // 重新渲染(高级词汇)会话列表  
 
+
         // 如果当前会话是被删除的会话，则切换到其他会话(发现删除会话后在输入框不能继续对话,就加了这行代码,只debug了0.25个小时,我真是个小天才) 
         if (currentSessionId === sessionId) {
             switchSession(sessions[0].id); // 切换到第一个会话  
@@ -139,6 +153,8 @@ function deleteSession(sessionId) //定义deleteSession函数
 function renderChatHistory(history) {//渲染聊天栏
     const chat = document.querySelector('.chat');//获取第一个class为chat的元素
     chat.innerHTML = '';//一样的
+
+
     history.forEach(message => {//爽了,还是遍历
         const li = document.createElement('li');
         li.textContent = message;
@@ -155,10 +171,9 @@ function chati() {
         return;
     }
 
-
     const currentSession = sessions.find(session => session.id === currentSessionId);
     if (currentSession) {
-        let inid = Date.now();
+        let inid = Date.now();//时间戳！
         var chating = document.createElement("li");
 
 
@@ -187,23 +202,23 @@ function chati() {
         chat.append(answer);
         currentSession.content.push("JoTangLM:"); // 占位符  
 
-        const requestBody = JSON.stringify({
+        const requestBody = JSON.stringify({//把js对象转化为json
             "messages": [
-                { "role": "user", "content": input }
+                { "role": "user", "content": input }//千帆api文档给出的输入
             ]
         });
 
 
         fetch('https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop/chat/ernie-speed-128k?access_token=[24.005711c55c17e296a17ab87895a33c98.2592000.1732013880.282335-115931407]', {
-            method: 'POST',
+            method: 'POST',//请求方式是post
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json'//这玩意只接受json(已卒)
             },
             body: requestBody
         })
 
 
-            .then(response => response.json())
+            .then(response => response.json())//响应(千帆的回复)转换为json
             .then(data => {
                 let botResponse = data.result.toString();
                 show(answer, botResponse);
@@ -248,17 +263,13 @@ function add1() {
         return;
     }
     const newSession = createSession(name);
+    sessions.push(newSession);// 将新会话添加到sessions数组中 
 
-    // 将新会话添加到sessions数组中  
-    sessions.push(newSession);
 
-    // 保存更新后的会话列表 
-    saveSessions(sessions);
-
-    // 会话列表渲染  
-    renderSessions();
-
+    saveSessions(sessions);// 保存更新后的会话列表 
+    renderSessions();// 会话列表渲染  
     switchSession(newSession.id);// 切换到新会话 
+
 
     newx.value = "";// 清空输入框的值
     alert("会话已成功添加！");
