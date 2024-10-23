@@ -21,7 +21,7 @@ if (width > 800) {
         }//如果轮播图播完,重置left=0,使之回到第一张图片
         var t = Math.floor(-left / 800);//t为当前图片序号
         imagelist.style.marginLeft = left + "px";//imagelist的左边距和'left'的关系,实现轮播效果
-        var n = (left % 800 === 0) ? n = 2000 : n = 15;//如果n能被800整除，n=2000，反之n=15
+        var n = (left % 800 === 0) ? n = 2000 : n = 15;//如果n能被800整除，n=2000，反之n=15(比if简单10000倍)
         /* 原先设置n的值的方法
         if (left % 800 === 0) {
             var n = 2000;
