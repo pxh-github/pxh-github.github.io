@@ -7,7 +7,7 @@
 
 html {
     height: 100%;
-    background-image: url(../img/back1.png);
+    background-image: url(../img/back.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -75,13 +75,13 @@ body {
     top: 130px;
     background-color: rgba(210, 208, 208, 0.95);
     left: 50%;
-    margin-left: -450px;
+    margin-left: -325px;
     /*实现水平居中*/
     display: flex;
     flex-direction: column;
     /*flexbox方向为栏(竖向)*/
     flex-grow: 1;
-    width: 700px;
+    width: 550px;
     height: 750px;
     padding: 30px;
     border-radius: 25px;

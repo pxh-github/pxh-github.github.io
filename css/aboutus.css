@@ -8,10 +8,9 @@
 
 html {
     height: 100%;
-    background-image: url(../img/back1.png);
+    background-image: url(../img/back.png);
     background-repeat: no-repeat;
     background-size: cover;
-    color: white;
 }
 
 #首页 {
@@ -25,7 +24,7 @@ html {
 
 .list1 a {
     text-decoration: none;
-    color: white;
+    color: black;
     padding: 5px 10px;
     border-radius: 20px;
     border: hidden;
@@ -34,7 +33,7 @@ html {
 
 /* 鼠标浮动 */
 .list1 a:hover {
-    background-color: rgb(53, 52, 52);
+    background-color: rgb(176, 174, 174);
 }
 
 header li {
@@ -57,7 +56,7 @@ header h1 {
 }
 
 header {
-    background-color: rgba(21, 21, 21, 0.95);
+    background-color: rgba(191, 183, 183, 0.95);
     top: 0px;
     height: 80px;
     width: 100%;
@@ -79,7 +78,8 @@ main {
 
 .q1 {
     position: fixed;
-    background-color: rgb(15, 15, 15);
+    background-color: rgb(209, 209, 209);
+    box-shadow: 0 10px 20px rgba(0, 0, 1, 0.4);
     height: 85%;
     width: 170px;
     margin-top: 2.5%;
@@ -102,16 +102,16 @@ main {
     margin: 60px 0;
     border-radius: 15px;
     background-color: transparent;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
 }
 
 .q1 li:hover {
-    background-color: rgb(48, 48, 48);
+    background-color: rgb(189, 187, 187);
 }
 
 .q1 li a {
-    color: white
+    color: rgb(95, 84, 84)
 }
 
 .q1 a:hover {
@@ -119,15 +119,24 @@ main {
 }
 
 .q2 {
+    box-shadow: 0 10px 20px rgba(0, 0, 1, 0.4);
     border-radius: 15px;
     overflow: auto;
     margin-top: 2.5%;
     height: 85%;
-    background-color: rgb(14, 14, 14);
-    width: 50%;
+    width: 600px;
+    background-color: rgb(202, 201, 201);
     position: absolute;
     margin-left: 35%;
     border: hidden;
+}
+
+.q2 div {
+    margin: 0 15px;
+}
+
+.q2 a:hover {
+    color: grey;
 }
 
 .q2 p {

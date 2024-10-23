@@ -6,6 +6,14 @@
 }
 
 /* 全局设置,把所有样式清空 */
+
+html {
+    height: 100%;
+    background-image: url(../img/back.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 #首页 {
     color: rgb(32, 60, 198);
 }
@@ -63,7 +71,6 @@ header h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: white;
 }
 
 .headers h1 {
@@ -91,12 +98,13 @@ header h1 {
 /*设置当鼠标悬停在其上时的css样式*/
 
 section {
-    background-color: white;
+
     margin: 2px;
     padding: 20px 50px;
 }
 
 #banner {
+    border-radius: 20px;
     width: 800px;
     height: 400px;
     /*设置图片区域的宽高，为js的设计奠基*/
@@ -163,14 +171,13 @@ blockquote {
 }
 
 .linian {
-    background-color: white;
+    /* background-color: white; */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .quote {
-    background-color: white;
     display: flex;
     flex-direction: column;
     /*flexbox方向为栏，竖向排列*/
@@ -183,7 +190,6 @@ blockquote {
 }
 
 .xuanyan {
-    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
